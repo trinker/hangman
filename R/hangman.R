@@ -55,13 +55,16 @@ function() {
                 col="red")
         }
         if (6 %in% parts) {
-            segments(.37, .426, .31, .3, lwd = 7)
-            mtext("o o", side = 1, cex = 1, adj = .3725, 
-                padj = -28.2, col="white")
-            mtext("x x", side = 1, cex=1, adj = .3725, padj = -28.2)
-            mtext("You Lose", side = 1, cex=8, padj = -3, 
-                col = "darkgreen")
-            mtext(paste(x, collapse = " "), side = 1, cex=1.5)
+        	segments(.37, .426, .31, .3, lwd = 7)
+        	mtext("o o", side = 1, cex = 1, adj = .3725, 
+        		  padj = -28.2, col="white")
+        	mtext("x x", side = 1, cex=1, adj = .3725, padj = -28.2)
+        	mtext("You Lose", side = 1, cex=8, padj = -3, 
+        		  col = "darkgreen")
+        	mtext(paste(x2, collapse = " "), side = 1, cex=1.6, col="white") 
+        	mtext(paste(x2, collapse = " "), side = 1, cex=1.5, col="white") 
+        	mtext(paste(x2, collapse = " "), side = 1, adj = .51, cex=1.6, col="white")
+        	mtext(paste(x, collapse = " "), side = 1, cex=1.5)
         }
         if (win1 == len) {
             mtext("WINNER!", side = 1, cex=8, padj = -3, 
