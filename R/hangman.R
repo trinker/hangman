@@ -1,13 +1,5 @@
 hangman <-
 function() {
-    if (!"qdap" %in% .packages(all.available = TRUE)) {
-        if (!"qdap" %in% .packages(all.available = TRUE)) {
-            stop("please install devtools package")
-        }
-        require(devtools)
-        install_github("qdap", "trinker") 
-    }
-    require(qdap)
     x1 <- DICTIONARY[sample(1:nrow(DICTIONARY), 1), 1]
     x <- unlist(strsplit(x1, NULL))
     len <- length(x)
