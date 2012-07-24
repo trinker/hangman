@@ -109,11 +109,11 @@ function() {
 	} 
 	if (win == 1) {
 		outcome <- "\nCongratulations! You Win!\n"
-		wins <<- wins + 1
+		assign(wins, wins + 1, envir = .GlobalEnv)
 	} else {
 		outcome <- paste("\nSorry. You loose. The word is:", x1, "\n")
-		losses <<- losses + 1
+		assign(losses, losses + 1, envir = .GlobalEnv)
 	}
 	cat(outcome)
-	cat(paste0("\nwins: ", wins, " | losses: ", losses))
+	cat(paste0("\nwins: ", wins, " | losses: ", losses, "\n"))
 }
