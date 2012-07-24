@@ -2,10 +2,10 @@
 \alias{hangman}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+hangman game
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+hangman game
 }
 \usage{
 hangman()
