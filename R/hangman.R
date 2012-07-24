@@ -5,7 +5,7 @@ function(reset.score = FALSE) {
 	len <- length(x)
 	x2 <- rep("_", len)
 	chance <- 0
-	if(!exists("wins", mode="numeric", envir = .GlobalEnv  | reset.score)){
+	if(!exists("wins", mode="numeric", envir = .GlobalEnv)  | reset.score){
 		assign("wins", 0, envir = .GlobalEnv)
 	}
 	if(!exists("losses", mode="numeric", envir = .GlobalEnv) | reset.score){
