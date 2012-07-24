@@ -35,7 +35,7 @@ function() {
         segments(.365, .83, .625, .83, lwd=2)
         segments(.625, .83, .625, .25, lwd=2)
         segments(.57, .25, .675, .25, lwd=2)
-        parts <- seq_along(length(wrong))
+        parts <- seq_len(length(wrong))
         if (identical(wrong, character(0))) {
             parts <- 0
         }
