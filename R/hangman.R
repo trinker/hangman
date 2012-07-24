@@ -5,12 +5,12 @@ function() {
 	len <- length(x)
 	x2 <- rep("_", len)
 	chance <- 0
-	if(!exists("wins", mode="character")){
- 	    wins <- 0
+	if(!exists("wins", mode="numeric", envir = .GlobalEnv)){
+		wins <<- 0
 	}
- 	if(!exists("losses", mode="character")){
-	    losses <- 0
- 	}
+	if(!exists("losses", mode="numeric", envir = .GlobalEnv)){
+		losses <<- 0
+	}
 	win1 <- 0
 	win <- win1/len
 	wrong <- character()
