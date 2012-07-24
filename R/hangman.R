@@ -22,7 +22,6 @@ function() {
         plot.new()
         mtext("HANGMAN", col = "blue", cex=2)    
         mtext(paste(x2, collapse = " "), side = 1, cex=1.5) 
-        mtext(paste(rep("_", len), collapse = " "), side = 1, cex=1.5) 
         mtext("wrong", side = 3, cex=1.5,
             adj = 0, padj = 1, col = "red") 
         mtext(paste(wrong, collapse = "\n"), side = 3, cex=1.5,
