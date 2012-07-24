@@ -11,8 +11,7 @@ function() {
 	right <- character()
 	print(x2, quote = FALSE)
 	hang.plot <- function(){ #plotting function
-		dev.new(width=5, height=4)
-		#plot.new()
+		plot.new()
 		mtext("HANGMAN", col = "blue", cex=2)    
 		mtext(paste(x2, collapse = " "), side = 1, cex=1.5) 
 		mtext("wrong", side = 3, cex=1.5,
