@@ -8,7 +8,7 @@ The classic hangman game for R
 Currently there isn't a release on [CRAN](http://cran.r-project.org/).
 
 
-You can, however, download the [zip ball](https://github.com/trinker/qdap/zipball/master) or [tar ball](https://github.com/trinker/qdap/tarball/master), decompress and run `R CMD INSTALL` on it, or use the **devtools** package to install the development version:
+You can, however, download the [zip ball](https://github.com/trinker/hangman/zipball/master) or [tar ball](https://github.com/trinker/hangman/tarball/master), decompress and run `R CMD INSTALL` on it, or use the **devtools** package to install the development version:
 
 ```r
 # install.packages("devtools")
