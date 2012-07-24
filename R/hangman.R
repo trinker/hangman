@@ -84,6 +84,9 @@ function() {
         if (y %in% c(right, wrong)) {
             stop(paste0("You've already guessed ", y))
         }
+        if (!y %in% letters) {
+        	stop(paste0(y, " is not a letter"))
+        }
         if (y %in% x) {
             right <<- c(right, y)
             win1 <<- sum(win1, sum(x %in% y)) 
