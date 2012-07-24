@@ -6,10 +6,10 @@ function() {
 	x2 <- rep("_", len)
 	chance <- 0
 	if(!exists("wins", mode="numeric", envir = .GlobalEnv)){
-		wins <<- 0
+		assign("wins", 0, envir = .GlobalEnv)
 	}
 	if(!exists("losses", mode="numeric", envir = .GlobalEnv)){
-		losses <<- 0
+		assign("losses", 0, envir = .GlobalEnv)
 	}
 	win1 <- 0
 	win <- win1/len
