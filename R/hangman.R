@@ -111,7 +111,7 @@ function() {
 		outcome <- "\nCongratulations! You Win!\n"
 		assign("wins", wins + 1, envir = .GlobalEnv)
 	} else {
-		outcome <- paste("\nSorry. You loose. The word is:", x1, "\n")
+		outcome <- paste("\nSorry. You lose. The word is:", x1, "\n")
 		assign("losses", losses + 1, envir = .GlobalEnv)
 	}
 	cat(outcome)
