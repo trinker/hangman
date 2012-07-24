@@ -5,6 +5,8 @@ function() {
 	len <- length(x)
 	x2 <- rep("_", len)
 	chance <- 0
+	wins <- 0
+	losses <- 0
 	win1 <- 0
 	win <- win1/len
 	wrong <- character()
@@ -103,8 +105,11 @@ function() {
 	} 
 	if (win == 1) {
 		outcome <- "\nCongratulations! You Win!\n"
+		wins <<- wins + 1
 	} else {
 		outcome <- paste("\nSorry. You loose. The word is:", x1, "\n")
+		losses <<- losses + 1
 	}
 	cat(outcome)
+	cat(paste0("\nwins: ", wins, " | losses: ", losses))
 }
