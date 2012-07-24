@@ -86,11 +86,11 @@ function() {
             right <<- c(right, y)
             win1 <<- sum(win1, sum(x %in% y)) 
             win <<- win1/len 
-            message(paste0("Correct!","/n"))
+            message(paste0("Correct!","\n"))
         } else {
             wrong  <<- c(wrong, y)
             chance  <<- length(wrong)
-            message(paste0("The word does not contain ", y, "/n"))
+            message(paste0("The word does not contain ", y, "\n"))
         }
         x2[x %in% right] <<- x[x %in% right]
         print(x2, quote = FALSE)
@@ -101,10 +101,9 @@ function() {
         try(guess())
     } 
     if (win == 1) {
-        outcome <- "Congratulations! You Win!/n"
+        outcome <- "\nCongratulations! You Win!\n"
     } else {
-        outcome <- paste("Sorry. You loose. The word is:", x1, "/n")
+        outcome <- paste("\nSorry. You loose. The word is:", x1, "\n")
     }
-    print(outcome)
-    #plot with the word and winner /lose
+    cat(outcome)
 }
