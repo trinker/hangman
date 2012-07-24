@@ -1,6 +1,6 @@
-\name{anRpackage-package}
-\alias{anRpackage-package}
-\alias{anRpackage}
+\name{hangman-package}
+\alias{hangman-package}
+\alias{hangman}
 \docType{package}
 \title{
 hangman game
@@ -10,11 +10,11 @@ hangman game
 }
 \details{
 \tabular{ll}{
-Package: \tab anRpackage\cr
+Package: \tab hangman\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2012-07-23\cr
-License: \tab What license is it under?\cr
+Date: \tab 2012-07-01\cr
+License: \tab GPL-2\cr
 }
 ~~ An overview of how to use the package, including the most important functions ~~
 }
