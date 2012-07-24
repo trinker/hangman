@@ -1,14 +1,14 @@
 hangman <- 
-function() {
+function(reset.score = FALSE) {
 	x1 <- DICTIONARY[sample(1:nrow(DICTIONARY), 1), 1]
 	x <- unlist(strsplit(x1, NULL))
 	len <- length(x)
 	x2 <- rep("_", len)
 	chance <- 0
-	if(!exists("wins", mode="numeric", envir = .GlobalEnv)){
+	if(!exists("wins", mode="numeric", envir = .GlobalEnv  | reset.score)){
 		assign("wins", 0, envir = .GlobalEnv)
 	}
-	if(!exists("losses", mode="numeric", envir = .GlobalEnv)){
+	if(!exists("losses", mode="numeric", envir = .GlobalEnv) | reset.score){
 		assign("losses", 0, envir = .GlobalEnv)
 	}
 	win1 <- 0
