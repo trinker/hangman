@@ -126,5 +126,5 @@ function(reset.score = FALSE) {
         cat(outcome)
         cat(paste0("\nwins: ", wins, " | losses: ", losses, "\n"))
         text(.5, .2, paste0("wins: ", wins, "  |  losses: ", 
-            losses), cex = 3)
+            losses), cex = 3, col = "violetred")
 }
