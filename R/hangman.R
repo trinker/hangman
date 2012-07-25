@@ -54,7 +54,7 @@ function(reset.score = FALSE) {
         segments(.365, .77, .365, .83, lwd=2)
         segments(.365, .83, .625, .83, lwd=2)
         segments(.625, .83, .625, .25, lwd=2)
-        segments(.575, .25, .675, .25, lwd=2)
+        segments(.58, .25, .675, .25, lwd=2)
         if (1 %in% parts) {
             circle(.365, .73, .7, lwd=4)
             if (!6 %in% parts) { 
