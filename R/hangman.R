@@ -1,5 +1,8 @@
 hangman <- 
 function(reset.score = FALSE) {
+	opar <- par()$mar
+	on.exit(par(mar = opar))
+	par(mar = rep(0, 4))
 	x1 <- DICTIONARY[sample(1:nrow(DICTIONARY), 1), 1]
 	x <- unlist(strsplit(x1, NULL))
 	len <- length(x)
@@ -16,18 +19,32 @@ function(reset.score = FALSE) {
 	wrong <- character()
 	right <- character()
 	print(x2, quote = FALSE)
+	circle <- function(x, y, radius, units=c("cm", "in"), segments=100,  
+		lwd = NULL){ 
+		units <- match.arg(units) 
+		if (units == "cm") radius <- radius/2.54 
+		plot.size <- par("pin") 
+		plot.units <- par("usr") 
+		units.x <- plot.units[2] - plot.units[1] 
+		units.y <- plot.units[4] - plot.units[3] 
+		ratio <- (units.x/plot.size[1])/(units.y/plot.size[2]) 
+		size <- radius*units.x/plot.size[1] 
+		angles <- (0:segments)*2*pi/segments 
+		unit.circle <- cbind(cos(angles), sin(angles)) 
+		shape <- matrix(c(1, 0, 0, 1/(ratio^2)), 2, 2) 
+		ellipse <- t(c(x, y) + size*t(unit.circle %*% chol(shape))) 
+		lines(ellipse, lwd = lwd) 
+	} #taken from John Fox: http://tolstoy.newcastle.edu.au/R/help/06/04/25821.html
 	hang.plot <- function(){ #plotting function
 		plot.new()
-		mtext("HANGMAN", col = "blue", cex=2)    
-		mtext(paste(x2, collapse = " "), side = 1, cex=1.5) 
-		mtext("wrong", side = 3, cex=1.5,
-			  adj = 0, padj = 5, col = "red") 
-		text(.015, .8, paste(wrong, collapse = "\n"), offset=.3, 
-			 cex=1.5, adj=c(0,1))
-		mtext("correct", side = 3, cex=1.5,
-			  adj = 1, padj = 5, col = "red")
-		text(.96, .8, paste(right, collapse = "\n"), offset=.3, 
-			 cex=1.5, adj=c(0,1))
+		text(.5, .9, "HANGMAN", col = "blue", cex=2)    
+		text(.5, .1, paste(x2, collapse = " "), cex=1.5) 
+		text(.05, .86, "wrong", cex=1.5, col = "red") 
+		text(.94, .86,"correct", cex=1.5, col = "red")
+		text(.05, .83, paste(wrong, collapse = "\n"), offset=.3, cex=1.5, 
+			 adj=c(0,1))
+		text(.94, .83, paste(right, collapse = "\n"), offset=.3, cex=1.5, 
+			 adj=c(0,1))
 		segments(.365, .77, .365, .83, lwd=2)
 		segments(.365, .83, .625, .83, lwd=2)
 		segments(.625, .83, .625, .25, lwd=2)
@@ -37,47 +54,36 @@ function(reset.score = FALSE) {
 			parts <- 0
 		}
 		if (1 %in% parts) {
-			mtext("O", side = 1, cex=4, adj = .365, padj = -7.2)
-			mtext("o o", side = 1, cex=1, adj = .3725, padj = -28.2)
-			mtext("<", side = 1, cex=1, adj = .373, padj = -27.6)
-			mtext("__", side = 1, cex=1, adj = .373, padj = -27.2)
+			circle(.365, .73, .7, lwd=4)
+			text(.365, .745, "o o", cex=1)
+			text(.36, .73, "<", cex=1)
+			text(.365, .71, "__", cex = 1)
 		}
 		if (2 %in% parts) {
-			mtext("I", side = 1, cex=4, adj = .375, padj = -6.25)
-			mtext("I", side = 1, cex=4, adj = .375, padj = -5.5)
-			mtext("I", side = 1, cex=4, adj = .375, padj = -4.75)
+			segments(.365, .685, .365, .4245, lwd=7)
 		}
 		if (3 %in% parts) {
-			segments(.37, .57, .45, .63, lwd=7)
+			segments(.365, .57, .45, .63, lwd=7)
 		}
 		if (4 %in% parts) {
-			segments(.37, .57, .29, .63, lwd=7)
+			segments(.365, .57, .29, .63, lwd=7)
 		}
 		if (5 %in% parts) {
-			segments(.37, .426, .43, .3, lwd=7)
-			mtext("__", side = 1, cex = 1, adj = .373, 
-				  padj = -27.2, col = "white")
-			mtext("O", side = 1, cex = 1.25, adj = .373, padj = -21.5, 
-				  col="red")
+			segments(.365, .426, .43, .3, lwd=7)
+			text(.365, .71, "__", cex = 1, col="white")
+			text(.365, .71, "O", cex = 1.25, col = "red")
 		}
 		if (6 %in% parts) {
-			segments(.37, .426, .31, .3, lwd = 7)
-			mtext("o o", side = 1, cex = 1, adj = .3725, 
-				  padj = -28.2, col="white")
-			mtext("x x", side = 1, cex=1, adj = .3725, padj = -28.2)
-			mtext("You Lose", side = 1, cex=8, padj = -3, 
-				  col = "darkgreen")
-			mtext(paste(x2, collapse = " "), side = 1, cex=1.6, col="white") 
-			mtext(paste(x2, collapse = " "), side = 1, cex=1.5, col="white") 
-			mtext(paste(x2, collapse = " "), side = 1, adj = .51, cex=1.6, 
-				  col="white")
-			mtext(paste(x, collapse = " "), side = 1, cex=1.5)
+			segments(.365, .426, .31, .3, lwd = 7)
+			text(.365, .745, "o o", cex=1, col = "white")
+			text(.365, .745, "x x", cex=1)
+			text(.5, .5, "You Lose", cex=8, col = "darkgreen")
+			text(.5, .1, paste(x2, collapse = " "), cex=1.5, col = "white")  
+			text(.5, .1, paste(x, collapse = " "), cex=1.5)  
 		}
 		if (win1 == len) {
-			mtext("WINNER!", side = 1, cex=8, padj = -3, 
-				  col = "green")
-			mtext("WINNER!", side = 1, cex=8, adj = .1, padj = -3.1, 
-				  col = "darkgreen")
+			text(.5, .5, "WINNER!", cex=8, col = "green")
+			text(.505, .505, "WINNER!", cex=8, col = "darkgreen")
 		}
 	} #end of hang.plot
 	guess <- function(){#start of guess function
