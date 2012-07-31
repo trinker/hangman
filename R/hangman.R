@@ -8,11 +8,8 @@ function(reset.score = FALSE) {
     len <- length(x)
     x2 <- rep("_", len)
     chance <- 0
-    if(!exists("wins", mode="numeric", envir = .GlobalEnv)  | reset.score){
-        assign("wins", 0, envir = .GlobalEnv)
-    }
-    if(!exists("losses", mode="numeric", envir = .GlobalEnv) | reset.score){
-        assign("losses", 0, envir = .GlobalEnv)
+    if(!exists(".hangmanoptions", mode="numeric", envir = .GlobalEnv) | reset.score){
+        assign(".hangmanoptions", c(wins = 0, losses = 0), envir = .GlobalEnv)
     }
     win1 <- 0
     win <- win1/len
@@ -118,13 +115,13 @@ function(reset.score = FALSE) {
     } 
     if (win == 1) {
         outcome <- "\nCongratulations! You Win!\n"
-        assign("wins", wins + 1, envir = .GlobalEnv)
+        assign(".hangmanoptions", .hangmanoptions + c(1, 0), envir = .GlobalEnv)
     } else {
         outcome <- paste("\nSorry. You lose. The word is:", x1, "\n")
-        assign("losses", losses + 1, envir = .GlobalEnv)
+        assign(".hangmanoptions", .hangmanoptions + c(0,1), envir = .GlobalEnv)
     }
-        cat(outcome)
-        cat(paste0("\nwins: ", wins, " | losses: ", losses, "\n"))
-        text(.5, .2, paste0("wins: ", wins, "  |  losses: ", 
-            losses), cex = 3, col = "violetred")
+    cat(outcome)
+    cat(paste0("\nwins: ", .hangmanoptions[1], " | losses: ", .hangmanoptions[2], "\n"))
+    text(.5, .25, paste0("\nwins: ", .hangmanoptions[1], " | losses: ", 
+        .hangmanoptions[2]), cex = 3, col = "violetred")
 }
