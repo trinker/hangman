@@ -122,6 +122,6 @@ function(reset.score = FALSE) {
     }
     cat(outcome)
     cat(paste0("\nwins: ", .hangmanoptions[1], " | losses: ", .hangmanoptions[2], "\n"))
-    text(.5, .25, paste0("\nwins: ", .hangmanoptions[1], " | losses: ", 
+    text(.5, .25, paste0("\nwins ", .hangmanoptions[1], " : losses ", 
         .hangmanoptions[2]), cex = 3, col = "violetred")
 }
