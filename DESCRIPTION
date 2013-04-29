@@ -8,5 +8,5 @@ Maintainer: Tyler Rinker <tyler.rinker@gmail.com>
 Depends: R (>= 2.14.0)
 LazyData: true
 ByteCompile: yes
-Description: hangman game
+Description: hangman game for word fun
 License:  GPL-2
